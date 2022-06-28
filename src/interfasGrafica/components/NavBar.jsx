@@ -28,6 +28,15 @@ export const Navbar = () => {
                     >
                         Dc
                     </NavLink>
+                    <NavLink 
+                       className={({isActive})=>`nav-item nav-link ${isActive ?'active':''}`} 
+                        to="/serch"
+                    >
+                        <form action="">
+                        <input type="heroe" name="heroe" placeholder="buscar heroe" />
+                        </form>
+                    </NavLink>
+                    
                 </div>
             </div>
 
