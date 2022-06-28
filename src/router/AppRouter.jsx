@@ -1,9 +1,8 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Navbar } from '../interfasGrafica'
-import { LogginPages } from '../auth/pages/LogginPages'
-import { DCPages } from '../heroes/pages/DCPages'
-import { MarvelPages } from '../heroes/pages/MarvelPages'
+import { LogginPages } from '../auth'
+import { DCPages,MarvelPages  } from '../heroes'
 
 export const AppRouter = () => {
   return (
