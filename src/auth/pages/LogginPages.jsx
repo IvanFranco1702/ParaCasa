@@ -9,7 +9,7 @@ export const LogginPages = () => {
 
     })
   }
-  return (
+  return (  
     <div>
       <h1>loggin page</h1>
       <hr />
