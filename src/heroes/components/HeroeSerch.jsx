@@ -1,12 +1,12 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
-import queryString from 'query-string'
+// import queryString from 'query-string'
 
 export const HeroeSerch = () => {
     const navigate =useNavigate()
-    const location= useLocation()
-    const {q= ''} = queryString.parse(location.search)
+    // const location= useLocation()
+    // const {q= ''} = queryString.parse(location.search)
 
 
     const {searchText,onInputChange}= useForm({
