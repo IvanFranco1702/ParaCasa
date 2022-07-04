@@ -1,4 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { HeroeSerch } from '../../heroes/components/HeroeSerch';
 
 
 export const Navbar = () => {
@@ -42,9 +43,7 @@ export const Navbar = () => {
                        className={({isActive})=>`nav-item nav-link ${isActive ?'active':''}`} 
                         to="/serch"
                     >
-                        <form action="">
-                        <input type="heroe" name="heroe" placeholder="buscar heroe" />
-                        </form>
+                       <HeroeSerch></HeroeSerch>
                     </NavLink>
                     
                 </div>

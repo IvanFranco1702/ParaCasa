@@ -1,7 +1,11 @@
 import React from 'react'
+import { HeroeSerch } from '../components/HeroeSerch'
 
 export const Serch = () => {
+
   return (
-    <h1>Serch...</h1>
+  <>
+  <h1>jloa</h1>
+  </>
   )
 }
