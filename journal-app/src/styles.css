@@ -11,3 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.cajita-sombreada{
+  box-shadow:0px 5px 5px rgba(0,0,0,0.2);
+}
