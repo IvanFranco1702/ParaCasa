@@ -1,29 +1,33 @@
-import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
-import {LogoutOutlined, MenuOutlined} from '@mui/icons-material'
-import React from 'react'
+import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 
-export const NavBar = ({drawerWidth}) => {
+
+export const NavBar = ({ drawerWidth = 240 }) => {
   return (
-    <AppBar position='fixed'
-    sx={{ 
-        width:{sm:`calc(100% -${drawerWidth}px)`},
-        ml:{sm:`${drawerWidth}px`}
-    }}
-   >
+    <AppBar 
+        position='fixed'
+        sx={{ 
+            width: { sm: `calc(100% - ${ drawerWidth }px)` },
+            ml: { sm: `${ drawerWidth }px` }
+         }}
+    >
         <Toolbar>
             <IconButton
-            color='inherit'
-            edge='start'
-            sx={{mr:2,display:{sm:'none'}}}>
-                <MenuOutlined></MenuOutlined>
+                color='inherit'
+                edge="start"
+                sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+                <MenuOutlined />
             </IconButton>
-            <Grid conteiner direccion='row' justifyContent='space-between' alingItems='center'>
-            <Typography variant='h6' noWrap component='div' >Journal app</Typography>
 
-            <IconButton color='error'>
-                <LogoutOutlined></LogoutOutlined>
-            </IconButton>
+            <Grid container direction='row' justifyContent='space-between' alignItems='center'>
+                <Typography variant='h6' noWrap component='div'> JournalApp </Typography>
+
+                <IconButton color='error'>
+                    <LogoutOutlined />
+                </IconButton>
             </Grid>
+
         </Toolbar>
     </AppBar>
   )
