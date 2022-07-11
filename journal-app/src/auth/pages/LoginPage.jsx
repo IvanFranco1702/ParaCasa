@@ -2,11 +2,25 @@ import {Link as RouterLink} from 'react-router-dom'
 import { Google } from '@mui/icons-material'
 import { Button, Grid, TextField, Typography,Link} from '@mui/material'
 import { AuthLeyout } from '../layout/AuthLeyout'
+import { useForm } from '../../hooks'
 
 export const LoginPage = () => {
+  const {formState,onInputChange, onResetForm,email,password} =useForm({
+    email:'ivanfrancoarg@gmail.com',
+    password: 123123
+  })
+
+  const onSubmit = (event)=>{
+    event.preventDefault()
+    console.log({email,password})
+  }
+  const onGoogle = ()=>{
+    console.log('gooooglleeee')
+  }
+
   return (
     <AuthLeyout title='Inicio'>
-            <form >
+            <form onSubmit={onSubmit}>
         <Grid conteiner sx={{mb:2}}>
 
           <Grid item xs={12} sx={{p:1}}>
@@ -14,7 +28,10 @@ export const LoginPage = () => {
             label='correo'
             type='email'
             placeholder='correo@gmail.com'
-            fullWidth></TextField>
+            fullWidth
+            name='email'
+            value={email}
+            onChange={onInputChange}></TextField>
           </Grid>
 
           <Grid item xs={12} sx={{p:1}}>
@@ -22,20 +39,25 @@ export const LoginPage = () => {
             label='contraseña'
             type='password'
             placeholder='contraseña'
-            fullWidth></TextField>
+            fullWidth
+            name='contraseña'
+            value={password}
+            onChange={onInputChange}></TextField>
           </Grid>
 
+         
+
         </Grid>
-        <Grid conetiner sapcing={2} sx={{mb:2}}>
+        <Grid conteiner sapcing={2} sx={{mb:2}}>
 
           <Grid item xs={12} sm={12} sx={{mb:1}}>
-            <Button variant='contained' fullWidth >
+            <Button type='submit' variant='contained' fullWidth >
               Login
             </Button>
           </Grid>
 
           <Grid item xs={12 } sm={12} >
-            <Button variant='contained' fullWidth >
+            <Button onClick={onGoogle}  variant='contained' fullWidth >
               <Google></Google>
               <Typography sx={{ml:1}}>GOOGLE</Typography>
             </Button>

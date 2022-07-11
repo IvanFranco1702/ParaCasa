@@ -14,7 +14,7 @@ function srcset(image, size, rows = 1, cols = 1) {
 export const Galeria =()=>{
   return (
     <ImageList
-      sx={{ width: '100%', height: 450 }}
+      sx={{ width: '90%', height: 350 }}
       variant="quilted"
       cols={4}
       rowHeight={121}
