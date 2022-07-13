@@ -26,10 +26,11 @@ export const useForm = ( initialForm = {},formValidation={} ) => {
     const createValidators= ()=> {
         const formCheck = {}    
         for(const formField of Object.keys(formValidation)){
-         const [fn, errorMesage] = formValidation[formField]
+         const [fn, errorMesage='este campo es requerido'] = formValidation[formField]
         
          formCheck[`${formField}Valid`]= fn(formState[formField]) ? null : errorMesage
         }
+        
         setFormValidation(formCheck)
     }
     
