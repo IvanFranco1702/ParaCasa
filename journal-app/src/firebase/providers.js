@@ -17,8 +17,10 @@ const googlePorvider= new GoogleAuthProvider()
     }
     catch(error){
         console.log(error)
+        const mensajeError = error.message
         return {
-            ok: false 
+            ok: false ,
+            mensajeError
         }
     }
 }

@@ -11,10 +11,10 @@ export const LoginPage = () => {
 const {estatus}= useSelector(state=> state.auth)
  const dispatch =  useDispatch()
   const {formState,onInputChange, onResetForm,email,password} =useForm({
-    email:'ivanfrancoarg@gmail.com',
-    password: 123123
+    email:'',
+    password: ''
   })
-  const isAuthenticating = useMemo(()=>estatus==='Autenticado',[estatus])
+  const isAuthenticating = useMemo(()=>estatus==='chequeado',[estatus])
 
   const onSubmit = (event)=>{
     event.preventDefault()
