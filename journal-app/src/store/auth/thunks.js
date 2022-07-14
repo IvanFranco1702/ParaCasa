@@ -1,6 +1,7 @@
 // import { useDispatch, useSelector } from 'react-redux'
-import { checkingCredentials, login, logout } from './authSlice'
 import { registerUserWithEmailPassword, singInWithGoogle } from '../../firebase/providers'
+import { checkingCredentials, login, logout } from './authSlice'
+
 
 
     
