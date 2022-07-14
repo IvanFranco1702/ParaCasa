@@ -1,6 +1,6 @@
 // import { useDispatch, useSelector } from 'react-redux'
-import { singInWithGoogle } from '../../firebase/providers'
 import { checkingCredentials, login, logout } from './authSlice'
+import { registerUserWithEmailPassword, singInWithGoogle } from '../../firebase/providers'
 
 
     
@@ -22,3 +22,14 @@ export const startGoogle = () => {
   
     }
   }
+export const screateUserWithEmailAndPassword = ({email, password, displayName})=>{
+  return async(dispatch)=>{
+
+    dispatch(checkingCredentials())
+
+    const resp = await registerUserWithEmailPassword({email,password, displayName})
+    
+    console.log(resp)
+    
+  }
+}
