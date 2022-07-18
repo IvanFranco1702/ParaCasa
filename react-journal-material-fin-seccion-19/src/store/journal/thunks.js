@@ -1,6 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite"
 import { FirebaseDB } from "../../firebase/config"
-import { crearNuevaNota, guardandoNuevaNota, guardarNotas, notaActiva } from "./journalSlice"
+import { cargandoNotas } from "../../helpers"
+import { cargaNotas, crearNuevaNota, guardandoNuevaNota, guardarNotas, notaActiva } from "./journalSlice"
 
 export const startNuevaNota =()=>{
     return async(dispatch, getState)=>{
@@ -22,4 +23,15 @@ export const startNuevaNota =()=>{
         dispatch(notaActiva(nuevaNota))
         dispatch(guardandoNuevaNota())
     }
+}
+export const startCargarNuevaNota =()=>{
+    return async(dispatch,getState)=>{
+        
+        const {uid}=getState().auth
+        console.log({uid})
+
+       const notas = await cargandoNotas(uid)
+        dispatch(cargaNotas(notas))
+    }
+
 }
