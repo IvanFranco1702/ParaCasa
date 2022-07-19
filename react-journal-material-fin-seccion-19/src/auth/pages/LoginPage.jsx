@@ -9,12 +9,12 @@ import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
 
-
-export const LoginPage = () => {
 const formData = {
   email: '',
   password: ''
 }
+export const LoginPage = () => {
+
   const { status, errorMessage } = useSelector( state => state.auth );
 
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle, logoutFirebase } from '../../firebase/providers';
 import { fileUpload } from '../../helpers/fileUpload';
-import { agregarFotosActivas } from '../journal/journalSlice';
+import { agregarFotosActivas, limpiarNotasEnElLogout } from '../journal/journalSlice';
 import { checkingCredentials, logout, login } from './';
 
 export const checkingAuthentication = () => {
@@ -60,7 +60,7 @@ export const startLogout = () => {
     return async( dispatch ) => {
         
         await logoutFirebase();
-
+        dispatch(limpiarNotasEnElLogout())
         dispatch( logout() );
 
     }

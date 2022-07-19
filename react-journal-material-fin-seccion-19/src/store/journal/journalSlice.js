@@ -8,13 +8,13 @@ export const journalSlice = createSlice({
     isSaving: false,
     SaveMessage:"",
     notes:[],
-    active:null
+    active:null,
     // {
     //     id:'',
     //     title:'',
     //     body:'',
     //     date:'',
-    //     imageUrls:[]
+        imageUrls:[]
     // }
 
 },
@@ -51,10 +51,17 @@ export const journalSlice = createSlice({
       state.SaveMessage= `${action.payload.title }, ha sido actualizada`
     },
     agregarFotosActivas:(state,action)=>{
-      state.active.imageUrl = [...state.active.imageUrls, ...action.payload ]
+      state.active.imageUrls = [...state.active.imageUrls, ...action.payload ]
+   },
+   limpiarNotasEnElLogout:(state)=>{
+    state.isSaving = false
+    state.SaveMessage = ' '
+    state.notes=[]
+    state.active = null 
+
    },
     borrarNotas:(state,action)=>{
-
+      state.notes = state.notes.filter(nota=> nota.id !== action.payload)
     }
   }
 });
@@ -64,4 +71,4 @@ export const {crearNuevaNota,
     cargaNotas,
     guardarNotas,
     actualizarNotas,
-    borrarNotas,guardandoNuevaNota,agregarFotosActivas} = journalSlice.actions
+    borrarNotas,guardandoNuevaNota,agregarFotosActivas,limpiarNotasEnElLogout} = journalSlice.actions
