@@ -1,4 +1,6 @@
 import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle, logoutFirebase } from '../../firebase/providers';
+import { fileUpload } from '../../helpers/fileUpload';
+import { agregarFotosActivas } from '../journal/journalSlice';
 import { checkingCredentials, logout, login } from './';
 
 export const checkingAuthentication = () => {
@@ -62,5 +64,16 @@ export const startLogout = () => {
         dispatch( logout() );
 
     }
+}
+export const startActualizandoArchivos=(files=[])=>{
+return async(dispatch)=>{
+    // await fileUpload(files[0])
+    const promesasUpload = []
+    for (const file of  files){
+        promesasUpload.push(fileUpload(file))
+    }
+    const fotsUrl=await Promise.all(promesasUpload)
+    dispatch(agregarFotosActivas(fotsUrl))
+}
 }
 

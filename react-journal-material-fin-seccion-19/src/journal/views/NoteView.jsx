@@ -1,5 +1,5 @@
-import { SaveOutlined } from '@mui/icons-material';
-import { Button, Grid, TextField, Typography, useFormControl } from '@mui/material';
+import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import { Button, Grid, IconButton, TextField, Typography, useFormControl } from '@mui/material';
 import { ImageGallery } from '../components'
 import {useForm}from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,10 +8,12 @@ import { notaActiva } from '../../store/journal/journalSlice';
 import { startGuardarLaNota } from '../../store/journal/thunks';
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.css'
+import { useRef } from 'react';
+import { startActualizandoArchivos } from '../../store/auth';
 
 export const NoteView = () => {
     const dispatch = useDispatch()
-    const {active,SaveMessage}=useSelector(state=>state.journal)
+    const {active,SaveMessage,isSaving}=useSelector(state=>state.journal)
     const{body, title,date, onInputChange, formState} =useForm(active)
     const  dia = useMemo(()=>{
         const newDate= new Date(date)
@@ -25,9 +27,17 @@ export const NoteView = () => {
     
 
     const guardarLaNota=()=>{
-        dispatch(startGuardarLaNota())
+        if(title.length>0){dispatch(startGuardarLaNota())}
+        
     }
-    useEffect(() => {
+    const onFileImputChange=({target})=>{
+
+        if(target.files==0)return 
+        dispatch(startActualizandoArchivos(target.files))
+    }
+    const fileInputRef =useRef()
+
+        useEffect(() => {
         if(SaveMessage.length>0){
             Swal.fire('Nota Actualizada',SaveMessage, 'exitoso')
         }
@@ -48,6 +58,20 @@ export const NoteView = () => {
             <Typography fontSize={ 39 } fontWeight='light' >{dia}</Typography>
         </Grid>
         <Grid item>
+
+         <input type="file" 
+         multiple 
+         ref={fileInputRef} 
+         onChange={onFileImputChange} 
+         style={{display:'none'}}/>
+
+        <IconButton  onClick={()=>fileInputRef.current.click()}
+       >
+            <UploadOutlined></UploadOutlined>
+        </IconButton>
+
+            
+
             <Button color="primary" sx={{ padding: 2 }}
             onClick={guardarLaNota}
             >

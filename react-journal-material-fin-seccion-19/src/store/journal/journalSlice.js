@@ -50,6 +50,9 @@ export const journalSlice = createSlice({
 
       state.SaveMessage= `${action.payload.title }, ha sido actualizada`
     },
+    agregarFotosActivas:(state,action)=>{
+      state.active.imageUrl = [...state.active.imageUrls, ...action.payload ]
+   },
     borrarNotas:(state,action)=>{
 
     }
@@ -61,4 +64,4 @@ export const {crearNuevaNota,
     cargaNotas,
     guardarNotas,
     actualizarNotas,
-    borrarNotas,guardandoNuevaNota} = journalSlice.actions
+    borrarNotas,guardandoNuevaNota,agregarFotosActivas} = journalSlice.actions
