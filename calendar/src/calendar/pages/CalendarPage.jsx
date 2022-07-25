@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar'
 import { addHours} from 'date-fns'
 import { localizer,getMessagesES } from '../../helpers'
 import { CalendarEvent } from '../components/CalendarEvent'
+import { CalendarModal } from '../components/CalendarModal'
 
 
 const events =[{
@@ -69,6 +70,7 @@ export const CalendarPage = () => {
       onView={onViewChanged}
     />
 
+    <CalendarModal></CalendarModal>
     </>
     )
 }
