@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { Calendar } from 'react-big-calendar'
-
+import { useUistore } from '../../hooks/useUistore'
 import { Navbar } from '../components/Navbar'
 import { addHours} from 'date-fns'
 import { localizer,getMessagesES } from '../../helpers'
@@ -24,7 +24,12 @@ const events =[{
 
 export const CalendarPage = () => {
 
-
+  
+  const{OpenDateModal}= useUistore()
+  function onDobleClick (){
+    return(OpenDateModal())
+      
+  }
   const[lastView, setLasView]=useState(localStorage.getItem('lastView')|| 'week')
   const eventStyleGetter = (event, start, end , isSelected)=>{
     // console.log(event, start, end , isSelected)
@@ -40,9 +45,7 @@ export const CalendarPage = () => {
    
   }
 
-  const onDobleClick = (e)=>{
-      console.log({doubleClick:e})
-  }
+
   const onSelect = (e)=>{
     console.log({click:e})
 }
