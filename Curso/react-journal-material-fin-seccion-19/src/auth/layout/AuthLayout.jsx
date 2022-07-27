@@ -13,22 +13,22 @@ export const AuthLayout = ({ children, title = '' }) => {
       sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
     >
 
-      <Grid item
-       className='box-shadow'
-       xs={ 3 }
-       sx={{ 
-            width: { sm: 450 },
-            backgroundColor: 'white', 
-            padding: 3, 
-            borderRadius: 2 
-        }}>
-          
-          <Typography variant='h5' sx={{ mb: 1 }}>{ title }</Typography>
-
+        <Grid item
+        className='box-shadow'
+        xs={ 3 }
+        sx={{ 
+              width: { sm: 450 },
+              backgroundColor: 'white', 
+              padding: 3, 
+              borderRadius: 2 
+          }}>
             
-            { children }
+            <Typography variant='h5' sx={{ mb: 1 }}>{ title }</Typography>
 
-        </Grid>
+              
+              { children }
+
+          </Grid>
 
     </Grid>
 
