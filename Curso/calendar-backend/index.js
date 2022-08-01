@@ -8,13 +8,11 @@ const app = express()
 // Directorio Publico
 
 app.use(express.static('public'))//el use es un midelware
-// app.get('/',(req,res)=>{
-    
-//     // console.log('se requiere /')
-  
-// })
+
+
 
 //Rutas 
+app.use('/api/auth',require('./routes/auth'))
 
 
 //escuchar peticiones 
