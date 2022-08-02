@@ -1,6 +1,6 @@
 const express= require ('express')
 require('dotenv').config()
-console.log(process.env)
+
 
 //crear el servidor de express 
 const app = express()
@@ -10,12 +10,14 @@ const app = express()
 app.use(express.static('public'))//el use es un midelware
 
 
+app.use(express.json())
+
 
 //Rutas 
 app.use('/api/auth',require('./routes/auth'))
 
 
 //escuchar peticiones 
-app.listen(process.env,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('servidor corriendo')
 })
