@@ -45,17 +45,55 @@ const crearUsuario= async(req,res=response)=>{
   
 }
 
-const loginUsuario=(req,res=response)=>{
+//Loggin
+
+const loginUsuario=async(req,res=response)=>{    
 
     const {name,email,contraseña} = req.body   
 
-    res.json({
-        ok:true,
-        msg:'login',
-        email, 
-        contraseña,
+    //confirmacion de email
+    try {
 
-    })
+        let usuario = await Usuario.findOne({
+            email
+        })
+        // console.log(ususario)
+        if(!usuario){
+            return res.status(400).json({
+                ok: false,
+                msg: ' el mail o la contraseña son incorrectos'
+            })
+        } 
+        
+        const comparacionContraseñas = bcrypt.compareSync(contraseña,usuario.contraseña)
+
+        if(!comparacionContraseñas){
+            return res.status(400).json({
+                ok:false,
+                msg:'contraseña incorrecta'
+            })
+        }
+
+        res.json({   
+                ok:true,
+                msg:'login',
+                uid: usuario.id, 
+                name: usuario.name,
+        
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            ok:false,
+            msg:'hbale con el administrador'
+        })
+        
+    }
+
+    // consfirmacion de la contraseña
+   
+    
     // console.log('se requiere /')
   
 }
