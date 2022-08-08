@@ -1,5 +1,6 @@
 import {useDispatch,useSelector} from 'react-redux'
 import { calendarApi } from '../api'
+import { onLoguotClendar } from '../store'
 import { clean, onChecking, onLogin, onLogout } from '../store/auth/authSlice'
 
 
@@ -71,6 +72,7 @@ export const useAthStore = () => {
     }
     const startLogout=()=>{
         localStorage.clear();
+       dispatch(onLoguotClendar()) 
         dispatch(onLogout())
         console.log('hola esto funciona como el culo ')
     }
