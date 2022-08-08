@@ -5,17 +5,17 @@ const usuarioSchema= Schema({
 
     name:{
         type:String,
-        require:true
+        required:true
     },
     email:{
         type:String,
-        require: true,
+        required: true,
         unique:true 
 
     }, 
     contraseña: {
         type:String,
-        require:true
+        required:true
 
     }
 

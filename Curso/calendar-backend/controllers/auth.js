@@ -1,6 +1,7 @@
 const {response} = require('express')
 const Usuario = require('../models/Usuario')
 const bcrypt = require('bcryptjs')
+const { generar } = require('../helpers/jwt')
 // const {validationResult} = require('express-validator')
 
 
@@ -26,11 +27,15 @@ const crearUsuario= async(req,res=response)=>{
         usuario.contraseña= bcrypt.hashSync(contraseña,salt)
 
             await usuario.save();
-            
+
+            //JWT 
+            const token = await generar(usuario.id,usuario.name)
+
             res.status(201).json({
                 ok:true, 
                 uid:usuario.id,
-                name:usuario.name
+                name:usuario.name,
+                token
             })
     }
     catch(err){
@@ -73,12 +78,15 @@ const loginUsuario=async(req,res=response)=>{
                 msg:'contraseña incorrecta'
             })
         }
+            //JWT 
+            const token = await generar(usuario.id,usuario.name)
 
         res.json({   
                 ok:true,
                 msg:'login',
                 uid: usuario.id, 
                 name: usuario.name,
+                token
         
         })
         
@@ -97,10 +105,18 @@ const loginUsuario=async(req,res=response)=>{
     // console.log('se requiere /')
   
 }
-const revalidarUsuario=(req,res=response)=>{
+const revalidarUsuario= async (req,res=response)=>{
+
+   const {uid, name} = req
+
+    const token = await generar(uid,name)
+
+
     res.json({
         ok:true,
-        msg: 'renew'
+        token,
+        uid,
+        name
     })
     // console.log('se requiere /')
   

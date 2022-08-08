@@ -1,8 +1,7 @@
-const express = require('express')
-const { validationResult } = require('express-validator')
-const response = express.response
-// const {response} = require('express') esta es otra forma de llamar al response 
 
+// const {response} = require('express') esta es otra forma de llamar al response 
+const { response } = require('express');
+const { validationResult } = require('express-validator');
 
 
 const validarCampos =(req,res=response,next )=>{
